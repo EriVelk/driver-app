@@ -11,3 +11,11 @@ The application runs with the following steps:
 3.- Run npm install
 
 4.- Execute npm run start
+
+The test application can be found at: https://driverapp-node.herokuapp.com/
+
+Login with:
+
+Username: admin25
+
+Password: Admin25
