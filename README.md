@@ -18,4 +18,4 @@ Login with:
 
 Username: admin25
 
-Password: Admin25
+Password: Admin2500
