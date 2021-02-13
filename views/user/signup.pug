@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+     if errors 
+          for error in errors
+               div(class='mt-1 alert alert-danger alert-dismissible fade show' role='alert')
+                    strong= error.msg
+                    button(type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close')
+
+     form(action='' method='POST')
+          div(class='card mt-2')
+               div(class='card-body')
+                    h4(class='card-title text-center')= title
+                    div(class='form-group mb-1')
+                         label(for='name') Name
+                         input(type='text' class='form-control' id='name' name='name' autocomplete='off' value=(undefined===name ? '':name))
+                    div(class='form-group mb-1')
+                         label(for='lastname') Lastname
+                         input(type='text' class='form-control' id='lastname' name='lastname' autocomplete='off' value=(undefined===lastname ? '':lastname))
+                    div(class='form-group mb-1')
+                         label(for='username') Username
+                         input(type='text' class='form-control' id='username' name='username' autocomplete='off' value=(undefined===username ? '':username))
+                    div(class='form-group mb-1')
+                         label(for='department') Department
+                         input(type='text' class='form-control' id='department' name='department' autocomplete='off' value=(undefined===department ? '':department))
+                         div(id='department-help' class='form-text') Admin, Sales, Human resources, Accounts or Public
+                    div(class='form-group')
+                         label(for='password') Password 
+                         input(type='password' class='form-control' id='password' name='password' autocomplete='off' value=(undefined===password ? '':password))
+                         div(id='department-help' class='form-text') The password must contain a capital letter, a number and at least 8 digits.
+               div(class='card-footer text-center')
+                    div(class='d-grid gap-2')
+                         button(type='submit' class='btn btn-warning') Sign Up
+                    

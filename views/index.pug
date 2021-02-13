@@ -1,0 +1,13 @@
+extends layout
+
+block content
+     if logout_msg.length
+          div(class='mt-1 alert alert-danger alert-dismissible fade show' role='alert')
+               strong= logout_msg 
+               button(type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close')
+
+     div(class='card mt-2 mb-2')
+          div(class='card-header')
+               h2= title
+          div(class='card-body')
+               p DriverApp is an application built with nodejs, express and pug as a view engine and applying styles with bootstrap 5.

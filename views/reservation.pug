@@ -1,0 +1,58 @@
+extends layout
+
+block content
+     div(class='card mt-2')
+          div(class='card-header text-center')
+               h2= title
+               div(class='row')
+                    div(class='col')
+                         h6 <i class="fa fa-motorcycle" aria-hidden="true"></i> Free Drivers: #{drivers}
+                         
+                         if(user.department == 'Admin') 
+                              if(drivers < 8)
+                                   div(class='d-grid gap-2')
+                                        a(href='/reservation/free' class='btn btn-primary mb-2') Release all the drivers
+
+                         if(block)
+                              <!-- Button trigger modal -->
+                              div(class='d-grid gap-2')
+                                   button(type="button" class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop") No drivers available
+                              <!-- Modal -->
+                              div(class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true")
+                                   div(class="modal-dialog")
+                                        div(class="modal-content")
+                                             div(class="modal-header")
+                                                  h5(class="modal-title" id="staticBackdropLabel") No drivers available
+                                             div(class="modal-body") Please wait until one or more drivers are vacated
+                                             div(class="modal-footer")
+                                                  button(type="button" class="btn btn-primary" data-bs-dismiss="modal") Close
+
+                         ul(class='list-group list-group-flush')
+                         each r in reservations
+                              div(class='d-grid gap-2 list-group-item')
+                                   if(r.status == false)
+                                        if(block)
+                                             a(href='/reservation/check/'+r._id class='btn btn-secondary disabled')= r.hour
+                                        else
+                                             a(href='/reservation/check/'+r._id class='btn btn-success')= r.hour
+                                   else
+                                        a(href='/reservation/check/'+r._id class='btn btn-danger disabled')= r.hour
+                         else
+                              li(class='list-group-item') There are not range.
+                    div(class='col')
+                         h6 <i class="fa fa-motorcycle" aria-hidden="true"></i> My Drivers: #{contUserDrivers}
+                         if(contUserDrivers > 0)
+                              div(class='d-grid gap-2')
+                                   a(href='/reservation/free/user' class='btn btn-primary mb-2') Release all my drivers
+                              
+                         if(reservationsUser.length)
+                              div(class='card')
+                                   each i in reservationsUser
+                                        div(class='d-grid gap-2 list-group-item')
+                                             if(i.status == true)
+                                                  a(href='/reservation/check/user/'+i._id class='btn btn-danger')= i.hour
+                         else
+                              div(class='card')
+                                   li(class='list-group-item') You have not made a reservation
+                                        
+     

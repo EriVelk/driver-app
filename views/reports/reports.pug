@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+     div(class='card mt-2 mb-2')
+          div(class='card-header text-center')
+               h2(class='card-title')= title
+     each d in drivers
+          div(class='card mb-2')
+               h6(class='card-header')= d.user.namecomplete
+               div(class='card-body')
+                    h6(class='card-text') Hour: #{d.hour}
+     else
+          div(class='card mt-1 text-center')
+               h4(class='card-title') All drivers are free
+
